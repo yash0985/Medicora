@@ -22,13 +22,27 @@
 
 
 
-     $('.arrow').on('mouseenter', function () {
-      $(this).find('.ul2').stop(true, true).slideDown(200);
-    });
+    //  $('.arrow').on('mouseenter', function () {
+    //   $(this).find('.ul2').stop(true, true).slideDown(200);
+    // });
 
-    $('.arrow').on('mouseleave', function () {
-      $(this).find('.ul2').stop(true, true).slideUp(200);
-    });
+    // $('.arrow').on('mouseleave', function () {
+    //   $(this).find('.ul2').stop(true, true).slideUp(200);
+    // });
+
+ $('.arrow').on('click', function (e) {
+    e.preventDefault();
+
+    const $submenu = $(this).find('.ul2');
+
+    // Slide up all others
+    $('.ul2').not($submenu).slideUp();
+    $('.arrow').not(this).removeClass('active');
+
+    // Toggle current
+    $submenu.stop(true, true).slideToggle(200);
+    $(this).toggleClass('active');
+  });
 
 
 
